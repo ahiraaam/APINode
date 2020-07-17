@@ -64,4 +64,6 @@ mongoose.connect('mongodb+srv://ahiram:gala2312@cluster0-htqnp.mongodb.net/blog?
     })
     .catch(err => {
         console.log(err)
+        console.log("faaail")
+
     })
