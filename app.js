@@ -60,7 +60,13 @@ app.use((error,req,res,next)=>{
 
 mongoose.connect('mongodb+srv://ahiram:gala2312@cluster0-htqnp.mongodb.net/blog?retryWrites=true&w=majority')
     .then(result => {
-        app.listen(8080)
+        const server = app.listen(8080)
+        //Connection to socket.io
+        const io  = require('./socket.js').init(server)
+        //Conecction between socket and client
+        io.on('connection', socket => {
+            console.log("Client connected")
+        })
     })
     .catch(err => {
         console.log(err)
